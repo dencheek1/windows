@@ -5,10 +5,12 @@ extends Node
 signal pressed(id: int)
 
 var state = 0
+var active = true;
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	$AnimatedSprite2D/TouchScreenButton.scale = get_viewport().get_visible_rect().size.x / get_viewport().size.x
+	var scale = get_viewport().get_visible_rect().size.x / get_viewport().size.x
+	$AnimatedSprite2D/TouchScreenButton.scale = Vector2(scale, scale)
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -40,9 +42,17 @@ func getState() -> int:
 func changeState() -> void:
 
 	state = (state + 1) & 1
-	print_debug(state)
 	$AnimatedSprite2D.frame = state
 
 func setState(st:int) -> void:
 	state = st
 	$AnimatedSprite2D.frame = state
+	
+func makeActive() -> void:
+	active = true
+	
+func makeInactive()  -> void:
+	active = false	
+
+func isActive() -> bool:
+	return active

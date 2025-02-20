@@ -11,7 +11,7 @@ script = ExtResource("1_wk5qb")
 mask = 170
 
 [node name="cell_grid" parent="event_manager" instance=ExtResource("3_khw6c")]
-position = Vector2(11, 11)
+position = Vector2(11, 95)
 scene = ExtResource("2_wb4fa")
 rows = 6
 columns = 6

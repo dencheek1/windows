@@ -41,8 +41,10 @@ func update_nodes(mask:int, center_id:int) -> void:
 	var id_list = []
 	var test
 	
+	#check node state
+	
+	#if node active	
 	for r in 3:
-		print_debug(id)
 		for c in 3:
 			test = mask >> (c + r * 3)
 			if test & 1 :
@@ -50,8 +52,10 @@ func update_nodes(mask:int, center_id:int) -> void:
 					if (id -1 + c) >= 0:
 						id_list.append(id -1 + c)
 		id += rows
-	print_debug(id_list)
 	
 	for nid in id_list:
 		nodes[nid].changeState()
 	
+
+func get_all_nodes() -> Dictionary:
+	return nodes
