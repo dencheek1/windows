@@ -44,15 +44,17 @@ func update_nodes(mask:int, center_id:int) -> void:
 	#check node state
 	
 	#if node active	
-	for r in 3:
-		for c in 3:
-			test = mask >> (c + r * 3)
-			if test & 1 :
-				if id >= 0 && id < rows*columns && id / columns == (id -1 + c) / columns:
-					if (id -1 + c) >= 0:
-						id_list.append(id -1 + c)
-		id += rows
+	if nodes[center_id].isActive:
+		for r in 3:
+			for c in 3:
+				test = mask >> (c + r * 3)
+				if test & 1 :
+					if id >= 0 && id < rows*columns && id / columns == (id -1 + c) / columns:
+						if (id -1 + c) >= 0:
+							id_list.append(id -1 + c)
+			id += rows
 	
+	#print_debug(id_list)
 	for nid in id_list:
 		nodes[nid].changeState()
 	

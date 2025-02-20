@@ -40,7 +40,6 @@ func getState() -> int:
 	return state
 
 func changeState() -> void:
-
 	state = (state + 1) & 1
 	$AnimatedSprite2D.frame = state
 
@@ -49,10 +48,15 @@ func setState(st:int) -> void:
 	$AnimatedSprite2D.frame = state
 	
 func makeActive() -> void:
+	$AnimatedSprite2D.visible = true
+	print_debug(active)
 	active = true
 	
 func makeInactive()  -> void:
 	active = false	
+	print_debug(active)
+	$AnimatedSprite2D.visible = false
+	
 
 func isActive() -> bool:
 	return active
