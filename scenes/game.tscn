@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://cjrkqku7nwsdp"]
+
+[ext_resource type="Script" path="res://scripts/event_manager.gd" id="1_wk5qb"]
+[ext_resource type="PackedScene" uid="uid://tvkvdc0c0wc3" path="res://scenes/node.tscn" id="2_wb4fa"]
+[ext_resource type="PackedScene" uid="uid://cii8xlyv7oso7" path="res://scenes/cell_grid.tscn" id="3_khw6c"]
+
+[node name="game" type="Node2D"]
+
+[node name="event_manager" type="Node" parent="."]
+script = ExtResource("1_wk5qb")
+mask = 170
+
+[node name="cell_grid" parent="event_manager" instance=ExtResource("3_khw6c")]
+position = Vector2(11, 11)
+scene = ExtResource("2_wb4fa")
+rows = 6
+columns = 6
+gap = 36
+
+[connection signal="pressed" from="event_manager/cell_grid" to="event_manager" method="_on_cell_grid_pressed"]

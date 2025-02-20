@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://dw5bpm5f6yklq"]
+
+[ext_resource type="Texture2D" uid="uid://bv8fw4t1tqket" path="res://res/inactive.png" id="1_uoqx6"]
+[ext_resource type="Texture2D" uid="uid://b5ij450vrh4rk" path="res://res/active.png" id="2_fxgg0"]
+[ext_resource type="Script" path="res://scripts/cell.gd" id="3_2tosn"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3mk5w"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_uoqx6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_fxgg0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[node name="cell" type="AnimatedSprite2D"]
+texture_filter = 1
+scale = Vector2(2.5, 2.5)
+sprite_frames = SubResource("SpriteFrames_3mk5w")
+frame_progress = 0.922969
+centered = false
+script = ExtResource("3_2tosn")
+id = 1
