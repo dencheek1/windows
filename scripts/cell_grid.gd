@@ -37,7 +37,7 @@ func _on_node_pressed(id: int) -> void:
 	
 	
 func update_nodes(mask:int, center_id:int) -> void:
-	var id = center_id - rows
+	var id = center_id + rows
 	var id_list = []
 	var test
 	
@@ -49,10 +49,10 @@ func update_nodes(mask:int, center_id:int) -> void:
 			for c in 3:
 				test = mask >> (c + r * 3)
 				if test & 1 :
-					if id >= 0 && id < rows*columns && id / columns == (id -1 + c) / columns:
-						if (id -1 + c) >= 0:
-							id_list.append(id -1 + c)
-			id += rows
+					if id >= 0 && id < rows*columns && id / columns == (id + 1 - c) / columns:
+						if (id + 1 - c) >= 0:
+							id_list.append(id + 1 - c)
+			id -= rows
 	
 	#print_debug(id_list)
 	for nid in id_list:

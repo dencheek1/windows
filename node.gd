@@ -49,12 +49,10 @@ func setState(st:int) -> void:
 	
 func makeActive() -> void:
 	$AnimatedSprite2D.visible = true
-	print_debug(active)
 	active = true
 	
 func makeInactive()  -> void:
 	active = false	
-	print_debug(active)
 	$AnimatedSprite2D.visible = false
 	
 

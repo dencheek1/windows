@@ -8,7 +8,7 @@
 
 [node name="event_manager" type="Node" parent="."]
 script = ExtResource("1_wk5qb")
-mask = 170
+mask = 79
 
 [node name="cell_grid" parent="event_manager" instance=ExtResource("3_khw6c")]
 position = Vector2(11, 95)
