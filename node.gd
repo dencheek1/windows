@@ -48,12 +48,14 @@ func setState(st:int) -> void:
 	$AnimatedSprite2D.frame = state
 	
 func makeActive() -> void:
-	$AnimatedSprite2D.visible = true
+	#$AnimatedSprite2D.visible = true
+	$AnimatedSprite2D.set_self_modulate(Color.WHITE)
 	active = true
 	
 func makeInactive()  -> void:
 	active = false	
-	$AnimatedSprite2D.visible = false
+	$AnimatedSprite2D.set_self_modulate(Color.DIM_GRAY)
+	#$AnimatedSprite2D.visible = false
 	
 
 func isActive() -> bool:

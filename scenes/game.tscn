@@ -1,10 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://cjrkqku7nwsdp"]
+[gd_scene load_steps=5 format=3 uid="uid://cjrkqku7nwsdp"]
 
+[ext_resource type="Script" path="res://scripts/game.gd" id="1_rajkf"]
 [ext_resource type="Script" path="res://scripts/event_manager.gd" id="1_wk5qb"]
 [ext_resource type="PackedScene" uid="uid://tvkvdc0c0wc3" path="res://scenes/node.tscn" id="2_wb4fa"]
 [ext_resource type="PackedScene" uid="uid://cii8xlyv7oso7" path="res://scenes/cell_grid.tscn" id="3_khw6c"]
 
 [node name="game" type="Node2D"]
+script = ExtResource("1_rajkf")
 
 [node name="event_manager" type="Node" parent="."]
 script = ExtResource("1_wk5qb")

@@ -56,7 +56,8 @@ func update_nodes(mask:int, center_id:int) -> void:
 	
 	#print_debug(id_list)
 	for nid in id_list:
-		nodes[nid].changeState()
+		if nodes[nid].isActive():
+			nodes[nid].changeState()
 	
 
 func get_all_nodes() -> Dictionary:

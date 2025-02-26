@@ -2,16 +2,13 @@ extends Node
 
 @export var mask: int
 @export var level:int = 0
-
+@export var filename:String
 var rng = RandomNumberGenerator.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	var solution = generate_level(6,mask,level,7)
-	var nodes = $cell_grid.get_all_nodes()
-	print_debug(solution)
-	prepare_field(mask,solution,nodes,6)
-	
+	pass
+
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -20,14 +17,17 @@ func _process(delta: float) -> void:
 
 
 func _on_cell_grid_pressed(id: int) -> void:
-	print_debug(id)
-	$cell_grid.update_nodes(mask, id)
+	if $cell_grid.get_all_nodes()[id].isActive() :
+		$cell_grid.update_nodes(mask, id)
 	if are_all_set():
 		level += 1 
-		var solution = generate_level(6,mask,level,12)
-		var nodes = $cell_grid.get_all_nodes()
-		print_debug(solution)
-		prepare_field(mask,solution,nodes,6)
+		var file = FileAccess.open("res://saved_game.dat", FileAccess.WRITE)
+		file.store_32(level)
+		file.close()
+		reload_level()
+
+		
+
 
 #asume field is square
 func prepare_field(mask:int, solution: Array[int], nodes:Dictionary, size: int) -> void:
@@ -83,3 +83,9 @@ func generate_level(size:int, mask:int, level:int, steps:int) -> Array[int]:
 	
 func init_grid(size:int, level_seed: Array[int]) -> void:
 	pass
+	
+func reload_level() -> void:
+	var solution = generate_level(6,mask,level,9)
+	print_debug(solution)
+	print_debug(level)
+	prepare_field( mask, solution,$cell_grid.get_all_nodes(),6)
